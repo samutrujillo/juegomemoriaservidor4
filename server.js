@@ -16,7 +16,7 @@ const twilio = require('twilio');
 // Configuración de Twilio
 const twilioConfig = {
    accountSid: process.env.TWILIO_ACCOUNT_SID || 'ACbf496efdf3deb9b09784154339f7b108',
-   authToken: process.env.TWILIO_AUTH_TOKEN || '7c41848275c903e6206e4dd0477bf959',
+   authToken: process.env.TWILIO_AUTH_TOKEN || '61f0dab4e6233780663846efd6e4a1e4',
    messagingServiceSid: process.env.TWILIO_MESSAGING_SERVICE_SID || 'MGa24e752e57ee33c33e5451e9ecc7590e',
    toPhoneNumber: process.env.TWILIO_TO_PHONE_NUMBER || '+573132736590'
 };
