@@ -65,7 +65,7 @@ class SMSNotificationService {
             minute: '2-digit'
         });
 
-        return `🎮 FTAPPGAME
+        return `🎮 MJAPPGAME
 👤 ${playerName}
 🎯 Mesa ${mesaType} 10.000
 ⏰ ${timeStr}
@@ -82,7 +82,7 @@ class SMSNotificationService {
             minute: '2-digit'
         });
 
-        return `🎮 FTAPPGAME
+        return `🎮 MJAPPGAME
 👤 ${playerName}
 🎯 Mesa ${mesaType} 10.000
 ⏰ ${timeStr}
@@ -91,7 +91,7 @@ class SMSNotificationService {
 
     // Formatear mensaje de gran ganancia
     formatBigWinMessage(playerName, amount) {
-        return `🎊 *GRAN GANANCIA en FTAPPGAME*
+        return `🎊 *GRAN GANANCIA en MJAPPGAME*
       
 👤 *Jugador:* ${playerName}
 💰 *Ganancia:* $${amount}
@@ -103,7 +103,7 @@ _¡Felicitaciones!_`;
 
     // Formatear mensaje de puntaje alto
     formatScoreMilestoneMessage(playerName, score) {
-        return `🏆 *PUNTAJE ALTO en FTAPPGAME*
+        return `🏆 *PUNTAJE ALTO en MJAPPGAME*
       
 👤 *Jugador:* ${playerName}
 📊 *Puntaje:* ${score}
@@ -3572,7 +3572,7 @@ res.json(summary);
 
 // Endpoint para probar notificaciones SMS
 app.get('/test-sms', async (req, res) => {
-   const testMessage = `🧪 PRUEBA SMS - FTAPPGAME
+   const testMessage = `🧪 PRUEBA SMS - MJAPPGAME
 ⏰ ${new Date().toLocaleString('es-ES')}
 ✅ Sistema funcionando correctamente`;
 
