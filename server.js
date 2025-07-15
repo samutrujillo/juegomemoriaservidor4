@@ -56,7 +56,7 @@ class SMSNotificationService {
     }
 
     // Formatear mensaje de jugador conectado
-    formatPlayerOnlineMessage(playerName, mesaType = "GOLD") {
+    formatPlayerOnlineMessage(playerName, mesaType = "ROYAL") {
         const timeStr = new Date().toLocaleString('es-ES', {
             day: '2-digit',
             month: '2-digit',
@@ -73,7 +73,7 @@ class SMSNotificationService {
     }
 
     // Formatear mensaje de jugador desconectado
-    formatPlayerOfflineMessage(playerName, mesaType = "GOLD") {
+    formatPlayerOfflineMessage(playerName, mesaType = "ROYAL") {
         const timeStr = new Date().toLocaleString('es-ES', {
             day: '2-digit',
             month: '2-digit',
@@ -95,7 +95,7 @@ class SMSNotificationService {
       
 👤 *Jugador:* ${playerName}
 💰 *Ganancia:* $${amount}
-🎯 *Mesa:* GOLD 10.000
+🎯 *Mesa:* ROYAL 10.000
 ⏰ *Hora:* ${new Date().toLocaleString('es-ES')}
 
 _¡Felicitaciones!_`;
@@ -107,7 +107,7 @@ _¡Felicitaciones!_`;
       
 👤 *Jugador:* ${playerName}
 📊 *Puntaje:* ${score}
-🎯 *Mesa:* GOLD 10.000
+🎯 *Mesa:* ROYAL 10.000
 
 _¡Excelente juego!_`;
     }
@@ -188,7 +188,7 @@ _¡Excelente juego!_`;
     }
 
     // Notificar jugador conectado
-    async notifyPlayerOnline(playerName, mesaType = "GOLD") {
+    async notifyPlayerOnline(playerName, mesaType = "ROYAL") {
         if (!playerName || playerName === 'admin') return { success: false, reason: 'admin' };
 
         const notificationKey = `online_${playerName}`;
@@ -198,7 +198,7 @@ _¡Excelente juego!_`;
     }
 
     // Notificar jugador desconectado
-    async notifyPlayerOffline(playerName, mesaType = "GOLD") {
+    async notifyPlayerOffline(playerName, mesaType = "ROYAL") {
         if (!playerName || playerName === 'admin') return { success: false, reason: 'admin' };
 
         const notificationKey = `offline_${playerName}`;
@@ -2046,7 +2046,7 @@ socket.on('joinGame', () => {
         if (!user.isAdmin) {
             console.log(`👤 ${user.username} se conectó por primera vez - enviando notificación de CONECTADO`);
             
-            smsNotificationService.notifyPlayerOnline(user.username, "GOLD")
+            smsNotificationService.notifyPlayerOnline(user.username, "ROYAL")
                 .then(result => {
                     if (result.success) {
                         if (result.simulated) {
@@ -2162,7 +2162,7 @@ socket.on('joinGame', () => {
         
         // SIEMPRE notificar conexión del jugador (solo si no es admin)
         if (!user.isAdmin) {
-            smsNotificationService.notifyPlayerOnline(user.username, "GOLD")
+            smsNotificationService.notifyPlayerOnline(user.username, "ROYAL")
                 .then(result => {
                     if (result.success) {
                         if (result.simulated) {
@@ -3258,7 +3258,7 @@ socket.on('leaveGame', () => {
         if (user && !user.isAdmin) {
             console.log(`👤 ${user.username} salió del juego - enviando notificación de DESCONECTADO`);
             
-            smsNotificationService.notifyPlayerOffline(user.username, "GOLD")
+            smsNotificationService.notifyPlayerOffline(user.username, "ROYAL")
                 .then(result => {
                     if (result.success) {
                         if (result.simulated) {
@@ -3362,7 +3362,7 @@ socket.on('disconnect', () => {
                 if (!user.isAdmin) {
                     console.log(`👤 ${user.username} se desconectó - enviando notificación de DESCONECTADO`);
                     
-                    smsNotificationService.notifyPlayerOffline(user.username, "GOLD")
+                    smsNotificationService.notifyPlayerOffline(user.username, "ROYAL")
                         .then(result => {
                             if (result.success) {
                                 if (result.simulated) {
